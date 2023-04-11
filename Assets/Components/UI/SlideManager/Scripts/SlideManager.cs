@@ -9,7 +9,7 @@ namespace Slides
         [SerializeField] private int currentSlideIndex = 0;
 
         [Header("Navigation")]
-        [SerializeField] private Transform navigation;
+        [SerializeField] private Navigation navigation;
         [SerializeField] private bool bubblesAreClickable = true;
         [SerializeField] private bool useProgressBar;
 
@@ -59,28 +59,27 @@ namespace Slides
             // Do not create navigation UI if there are no slides
             if (!slideContainer) return;
 
-            if (navigation == null)
+            if (!navigation)
             {
                 Debug.LogWarning("SlideManager did not find a child GameObject called Navigation.");
                 return;
             }
 
             // Create navigation bubbles (or a progress bar) and activate the correct one
-            if (navigation.TryGetComponent(out Navigation nav))
+            if (useProgressBar)
             {
-                if (useProgressBar)
-                {
-                    nav.useProgressBar = true;
-                    nav.SetNumSlides(slideContainer.childCount);
-                }
-                else
-                {
-                    nav.SetBubbleClickability(bubblesAreClickable);
-                    nav.GenerateBubbles(slideContainer.childCount);
-                }
-                nav.SetCurrentSlideIndex(currentSlideIndex);
-                nav.ChangeSlide(currentSlideIndex, false);
+                navigation.useProgressBar = true;
+                navigation.SetNumSlides(slideContainer.childCount);
             }
+            else
+            {
+                navigation.HideProgressBar();
+                navigation.SetBubbleClickability(bubblesAreClickable);
+                navigation.GenerateBubbles(slideContainer.childCount);
+            }
+
+            navigation.SetCurrentSlideIndex(currentSlideIndex);
+            navigation.ChangeSlide(currentSlideIndex, false);
         }
 
         private void LoadInitialSlide()
