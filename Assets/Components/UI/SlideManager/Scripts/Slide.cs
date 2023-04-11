@@ -10,25 +10,21 @@ namespace Slides
         private CameraController cameraController;
         private SimulationSlideController simSlideController;
 
-        private void Awake()
-        {
-            TryGetComponent(out canvasGroup);
-            TryGetComponent(out cameraController);
-            TryGetComponent(out simSlideController);
-        }
-
+        // SlideManager calls Deactivate() on all slides in its Awake() method
         public void Deactivate()
         {
             // Hide and disable all UI elements using the CanvasGroup
-            if (canvasGroup)
+            if (TryGetComponent(out canvasGroup))
             {
                 canvasGroup.alpha = 0;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
             }
 
+            TryGetComponent(out cameraController);
+
             // Deactivate the associated simulations
-            if (simSlideController)
+            if (TryGetComponent(out simSlideController))
             {
                 simSlideController.DeactivateSimulation();
             }
