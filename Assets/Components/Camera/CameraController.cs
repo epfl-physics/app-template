@@ -39,6 +39,8 @@ public class CameraController : MonoBehaviour
     private new Camera camera;
     private bool componentIsCamera;
 
+    public static event System.Action<Vector3, Quaternion> OnCameraMovementComplete;
+
     private void AssignCameraReferences()
     {
         // Check if this object is the camera
@@ -127,6 +129,9 @@ public class CameraController : MonoBehaviour
 
         cameraTransform.position = targetPosition;
         cameraTransform.rotation = finalRotation;
+
+        // Alert other scripts (e.g. SlideControllers) that the camera has finished moving
+        OnCameraMovementComplete?.Invoke(targetPosition, finalRotation);
     }
 
     private IEnumerator ChangeBackgroundColor(Color targetColor, float transitionTime)
