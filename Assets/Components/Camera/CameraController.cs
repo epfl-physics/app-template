@@ -129,6 +129,7 @@ public class CameraController : MonoBehaviour
 
         cameraTransform.position = targetPosition;
         cameraTransform.rotation = finalRotation;
+        UpdateCameraState();
 
         // Alert other scripts (e.g. SlideControllers) that the camera has finished moving
         OnCameraMovementComplete?.Invoke(targetPosition, finalRotation);
