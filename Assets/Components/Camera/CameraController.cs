@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        // Slides in the introduction will not be cameras themselves
+        // Slides in the Introduction will not be cameras themselves
         // The SlideManager will handle triggering camera movement in that case
         if (componentIsCamera)
         {
