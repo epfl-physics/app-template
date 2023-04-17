@@ -4,6 +4,4 @@ This is a template repository for the Unity-based interactive simulations develo
 
 ## How to use
 
----
-
 Coming soon...
