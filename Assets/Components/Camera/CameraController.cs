@@ -46,12 +46,10 @@ public class CameraController : MonoBehaviour
         // Check if this object is the camera
         if (TryGetComponent(out camera))
         {
-            // Debug.Log(transform.name + " IS a camera");
             componentIsCamera = true;
         }
         else
         {
-            // Debug.Log(transform.name + " IS NOT a camera");
             camera = Camera.main;
             componentIsCamera = false;
         }
