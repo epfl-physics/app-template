@@ -18,6 +18,7 @@ public class CenteredSlider : Slider
         onValueChanged.AddListener(UpdateFillArea);
         onValueChanged.AddListener(UpdateValue);
         UpdateFillArea(value);
+        ApplyColor();
     }
 
     protected override void OnDisable()
@@ -33,6 +34,8 @@ public class CenteredSlider : Slider
         onValueChanged.AddListener(UpdateFillArea);
         onValueChanged.AddListener(UpdateValue);
         UpdateFillArea(value);
+        UpdateValue(value);
+        ApplyColor();
     }
 
     private void UpdateFillArea(float value)
