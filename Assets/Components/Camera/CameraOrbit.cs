@@ -33,16 +33,14 @@ public class CameraOrbit : MonoBehaviour
     private float azimuthalAngle;
     private float currentDistance;
     private bool isOrbiting;
-    private bool isZooming;
 
     private float speedMultiplier = 1;
 
     public static event System.Action OnStartOrbit;
     public static event System.Action OnEndOrbit;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        // CameraTagger.OnMainCameraChanged += HandleMainCameraChanged;
         if (TryGetComponent<CameraController>(out var controller))
         {
             // Debug.Log(transform.name + " will respond to CameraController");
@@ -58,16 +56,15 @@ public class CameraOrbit : MonoBehaviour
 #endif
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        // CameraTagger.OnMainCameraChanged -= HandleMainCameraChanged;
         if (TryGetComponent<CameraController>(out var controller))
         {
             CameraController.OnCameraMovementComplete -= HandleCameraMovementComplete;
         }
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         if (!target) return;
 
@@ -202,12 +199,6 @@ public class CameraOrbit : MonoBehaviour
 
         return zoomInput;
     }
-
-    // public void HandleMainCameraChanged()
-    // {
-    //     // Debug.Log(transform.name + " CameraTagger.OnMainCameraChanged");
-    //     Initialize();
-    // }
 
     public void HandleCameraMovementComplete(Vector3 cameraPosition, Quaternion cameraRotation)
     {
