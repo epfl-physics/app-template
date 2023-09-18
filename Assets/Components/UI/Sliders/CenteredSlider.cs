@@ -37,7 +37,7 @@ public class CenteredSlider : Slider
         ApplyColor();
     }
 
-    private void UpdateFillArea(float value)
+    protected void UpdateFillArea(float value)
     {
         float normalizedValue = (value - minValue) / (maxValue - minValue);
         float zeroPoint = -minValue / (maxValue - minValue);
