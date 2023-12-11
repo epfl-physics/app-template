@@ -257,7 +257,7 @@ MonoBehaviour:
   cameraState: {fileID: 11400000, guid: 4142d516b6c8d45ab98b9075babf832f, type: 2}
   targetPosition: {x: 0, y: 5, z: -20}
   targetRotation: {x: 14.036, y: 0, z: 0}
-  moveTime: 3
+  moveTime: 2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
   cameraTransform: {fileID: 21022747}
