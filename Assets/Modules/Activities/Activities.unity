@@ -604,7 +604,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -686,11 +686,6 @@ MonoBehaviour:
   targetPosition: {x: 0.7, y: 0.8, z: -8}
   targetRotation: {x: 6, y: 0, z: 0}
   moveTime: 1.5
-  canZoom: 0
-  minZoom: 1
-  maxZoom: 10
-  zoomSpeed: 1
-  zoomTarget: {fileID: 0}
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
   cameraTransform: {fileID: 0}
